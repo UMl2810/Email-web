@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compose Message</title>
+    <link rel="stylesheet" href="/style/compose.css" type="text/css">
+</head>
+
+<body>
+    <div class="navbar">
+        <h2> <%= typeof fullname !== "undefined" && fullname ? fullname : "" %></h2>
+        <a href="/outbox">Outbox</a>
+        <a href="/">Inbox</a>
+        <a href="/logout">Sign out</a>
+    </div>
+    <% if (typeof success !== 'undefined') { %>
+        <div class="success-message">
+            <div class="success-message-text">
+                <%= success %>
+            </div>
+            <div class="success-actions">
+                <button onclick="window.location.href='/outbox'" class="btn1">
+                    View in Outbox
+                </button>
+                <button onclick="clearForm()" class="btn2">
+                    <a>Compose New Message</a>
+                </button>
+            </div>
+        </div>
+    <% } %>
+    <% if (typeof error !== 'undefined') { %>
+        <div class="error-message">
+            <%= error %>
+        </div>
+    <% } %>
+    <div class="compose">
+        <h1>Compose email</h1>
+        <% if (typeof error !== "undefined" && error) { %>
+            <span style="color: red;"><%= error %></span>
+        <% } %>
+        <form action="/compose-message" method="post" enctype="multipart/form-data">
+            <div class="form">
+                <label>Receiver</label>
+                <select id="receiver" name="receiver">
+                    <% if (typeof emails !== "undefined" && emails.length > 0) { 
+                        emails.forEach((email) => { 
+                            const selected = (typeof input !== "undefined" && input.receiver === email) ? 'selected' : ''; 
+                    %>
+                        <option class="form-control" value="<%= email %>" <%= selected %>><%= email %></option>
+                    <% }); } %>
+                </select>
+            </div>
+
+            <div class="form">
+                <label>Title</label>
+                <input type="text" class="form-control" name="title" value="<%= typeof input !== "undefined" ? input.title : '' %>">
+            </div>
+
+            <div class="form">
+                <label>Message</label>
+                <textarea class="form-control" name="message"><%= typeof input !== "undefined" ? input.message : '' %></textarea>
+            </div>
+
+            <div class="form">
+                <label for="attachment">Attachment</label>
+                <input type="file" name="attachment" id="attachment">
+            </div>
+
+            <button type="submit" class="btn1">Send</button>
+            <button class="btn2"><a href="/">Back</a></button>
+        </form>
+    </div>
+    <script>
+        function clearForm() {
+            document.querySelector('form').reset();
+            const successMessage = document.querySelector('.success-message');
+            if (successMessage) {
+                successMessage.remove();
+            }
+        }
+    </script>
+</body>
+</html>

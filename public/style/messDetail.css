@@ -1,0 +1,85 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: url('../img/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #333;
+}
+
+.navbar {
+    background-color: #555;
+    padding: 15px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar h2 {
+    margin-right: 20px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin-left: 15px;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+.Message-detail {
+    padding: 20px;
+    max-width: 600px;
+    margin: 40px auto;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.Message-detail h1 {
+    margin-bottom: 20px;
+    color: #585858;
+}
+
+.Message-detail div {
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+.Message-detail strong {
+    font-weight: bold;
+}
+
+.btn {
+    background-color: #F47800;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.btn a {
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn:hover {
+    background-color: #f47a008d;
+}
+
+.button-container {
+    margin-top: 20px;
+    text-align: left; 
+}
